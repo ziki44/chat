@@ -1,5 +1,36 @@
 import { v4 as uuidv4 } from 'uuid';
 
+let books = [];
+
+const fetchBooks = () => {
+    fetch('http://localhost:3000/books')
+        .then((response) => response.json())
+        .then((data) => {
+            books = data
+            localStorage.setItem('books', JSON.stringify(books))
+            renderBooks(data)
+        })
+        .catch((e) => {
+            console.log(e.message);
+        }); 
+}
+
+const postBook = (newBook) => {
+    fetch('http://localhost:3000/books', {
+        method: "POST",
+        headers:{
+            'Content-Type': "application/json"
+        },
+        body: JSON.stringify(newBook)
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        books = data;
+        localStorage.setItem('books', JSON.stringify(books))
+        renderBooks(data);
+    })
+    .catch((e) => console.log(e.message))
+}
 
 // const booksFromLocalDatabase = [
 //     {
@@ -26,7 +57,12 @@ import { v4 as uuidv4 } from 'uuid';
   
   // Forma skrocona przy uzyciu operatora ??
   
-  const bookLibrary = JSON.parse(localStorage.getItem('books')) ?? [];
+  
+
+
+
+//   const bookLibrary = JSON.parse(localStorage.getItem('books')) ?? [];
+  const bookLibrary = books ?? [];
   
   const booksList = document.querySelector('#list');
   const booksForm = document.querySelector('#booksForm');
@@ -88,9 +124,11 @@ import { v4 as uuidv4 } from 'uuid';
       price: addBookPriceInput.value
     }
   
-    bookLibrary.push(newBook);
-    localStorage.setItem('books', JSON.stringify(bookLibrary))
-    renderBooks(bookLibrary)
+    postBook(newBook);
+    // bookLibrary.push(newBook);
+    // renderBooks(bookLibrary)
+
+    // localStorage.setItem('books', JSON.stringify(bookLibrary))
   
     addBookTitleInput.value = ''
     addBookCategoryInput.value = ''
@@ -99,6 +137,7 @@ import { v4 as uuidv4 } from 'uuid';
     addBookPriceInput.value = ''
   }
   
-  renderBooks(bookLibrary)
+//   renderBooks(bookLibrary)
+  fetchBooks();
   booksForm.addEventListener('submit', filterBook)
   addBookForm.addEventListener('submit', addBook)

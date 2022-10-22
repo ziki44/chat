@@ -1,0 +1,65 @@
+{
+  "books": [
+    {
+      "title": "Harry Potter i kamień filozoficzny",
+      "category": "Fantasy",
+      "author": "J.K. Rowling",
+      "year": 1992,
+      "price": 49.99
+    },
+    {
+      "title": "God father",
+      "category": "Crime",
+      "author": "Mario Puzo",
+      "year": 1960,
+      "price": 59.99
+    },
+    {
+      "title": "Alicja z krainy czarów",
+      "category": "Crime",
+      "author": "None",
+      "year": 1987,
+      "price": 59.99
+    },
+    {
+      "id": "f44956e4-73c1-47b3-9ca5-ed747b588b68",
+      "title": "Test",
+      "category": "d",
+      "author": "d",
+      "year": "d",
+      "price": "d"
+    },
+    {
+      "id": "bf5fdc73-1eb0-47ed-b095-be0441b42e98",
+      "title": "Test2",
+      "category": "b",
+      "author": "b",
+      "year": "b",
+      "price": "b"
+    },
+    {
+      "id": "582cbba4-f6f4-4a07-abaa-ccaa231eec8c",
+      "title": "Test3",
+      "category": "b",
+      "author": "b",
+      "year": "b",
+      "price": "b"
+    },
+    {
+      "id": "e8519bba-8b90-44ab-8cba-0cd6ac23f897",
+      "title": "Test4",
+      "category": "g",
+      "author": "g",
+      "year": "g",
+      "price": "g"
+    },
+    {
+      "id": "cacd64fb-e88b-42a5-803a-f8c40864b5e1",
+      "title": "Test5",
+      "category": "j",
+      "author": "j",
+      "year": "j",
+      "price": "j"
+    }
+  ]
+}
