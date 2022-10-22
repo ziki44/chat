@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
-import { post } from '../helpers/http';
-import { URLS } from '../helpers/urls';
+import { get, post } from '../helpers/http';
+import URLS from '../helpers/urls';
 
 
 // const booksFromLocalDatabase = [
@@ -28,7 +28,7 @@ import { URLS } from '../helpers/urls';
 
 // Forma skrocona przy uzyciu operatora ??
 
-let bookLibrary = []
+
 
 const booksList = document.querySelector('#list');
 const booksForm = document.querySelector('#booksForm');
@@ -41,6 +41,8 @@ const addBookYearInput = document.querySelector('#newBookYear')
 const addBookAuthorInput = document.querySelector('#newBookAuthor')
 const addBookPriceInput = document.querySelector('#newBookPrice')
 
+let bookLibrary = []
+
 // * Destrukcja obiektow
 // books.forEach(({ title, category  }) => {
 //   booksList.innerHTML += `
@@ -52,18 +54,11 @@ const addBookPriceInput = document.querySelector('#newBookPrice')
 // })
 
 const fetchBooks = () => {
-  // fetch
-  fetch(URLS.books)
-    .then((response) => {
-      return response.json();
-    })
+  get(URLS.books)
     .then(data => {
       bookLibrary = data;
       renderBooks(data);
-    })
-    .catch(error => {
-      console.log(error.message);
-    })
+    });
 }
 
 const postBook = (newBook) => {
