@@ -1,4 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
+import { post } from '../helpers/http';
+import { URLS } from '../helpers/urls';
+
 
 // const booksFromLocalDatabase = [
 //   {
@@ -50,7 +53,7 @@ const addBookPriceInput = document.querySelector('#newBookPrice')
 
 const fetchBooks = () => {
   // fetch
-  fetch('http://localhost:3000/books')
+  fetch(URLS.books)
     .then((response) => {
       return response.json();
     })
@@ -64,18 +67,11 @@ const fetchBooks = () => {
 }
 
 const postBook = (newBook) => {
-  fetch('http://localhost:3000/books/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': "application/json"
-    },
-    body: JSON.stringify(newBook)
-  })
-  .then(res => res.json())
-  .then(() => {
-    bookLibrary.push(newBook);
-    renderBooks(bookLibrary)
-  })
+    post(URLS.books, newBook)
+    .then(() => {
+        bookLibrary.push(newBook);
+        renderBooks(bookLibrary)
+    })
 }
 
 // ES7 Async/await*
